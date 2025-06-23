@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: HSRPC Schema
+  version: "0.0.1"
+paths: {}
+
+components:
+  schemas:
+    HSHeader:
+      title: HSRPC Header
+      type: object
+      properties:
+        hsrpc:
+          $ref: "#/components/schemas/HSVersion"
+        id:
+          $ref: "#/components/schemas/HSMessageID"
+        correlationId:
+          type: integer
+          format: int64
+          nullable: true
+          description: "CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern"
+        target:
+          title: HSRPC target
+          type: string
+          description: the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+        package:
+          type: string
+          description: the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
+        service:
+          type: string
+          description: the service of the message (as in a protobuf service name). e.g. 'UserService'
+        method:
+          type: string
+          description: the method of the message. e.g. 'getUser'
+      required:
+        - hsrpc
+        - id
+        - target
+        - method
+      additionalProperties: false
+
+    HSRequest:
+      title: HSRPC Request Body
+      allOf:
+        - $ref: "#/components/schemas/HSHeader"
+        - type: object
+          properties:
+            params:
+              $ref: "#/components/schemas/HSPayload"
+
+    HSResponse:
+      title: HSRPC Response Body
+      allOf:
+        - $ref: "#/components/schemas/HSHeader"
+        - type: object
+          properties:
+            result:
+              $ref: "#/components/schemas/HSPayload"
+            error:
+              $ref: "#/components/schemas/HSErrorObject"
+              nullable: true
+              description: "error object. null means no error"
+          oneOf:
+            - required: ["result"]
+              not:
+                required: ["error"]
+            - required: ["error"]
+              not:
+                required: ["result"]
+    HSPayload:
+      title: HSRPC Payload
+      nullable: true
+      description: "arbitrary payload. null means no payload"
+      oneOf:
+        - type: string
+          format: binary
+          description: "binary payload. null means no payload"
+        - type: object
+          description: "object payload. null means no payload"
+
+    HSMessageID:
+      title: HSRPC Request/Response ID
+      oneOf:
+        - type: integer
+        - type: string
+          description: message id
+
+    HSMethod:
+      type: string
+      description: built-in methods for hsrpc
+      enum:
+        - connect
+        - disconnect
+    HSVersion:
+      title: HSRPC Version
+      type: string
+      enum: ["1.0"]
+      description: version of hsRpc
+    HSErrorObject:
+      title: HSRPC Error Object
+      type: object
+      properties:
+        code:
+          type: integer
+          description: error code
+        message:
+          type: string
+          description: error message
+        data:
+          type: object
+          nullable: true
+          description: optional data for error
+
+      required:
+        - code
+        - message
+      additionalProperties: false
