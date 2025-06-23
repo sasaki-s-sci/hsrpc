@@ -18,7 +18,7 @@ components:
           type: integer
           format: int64
           nullable: true
-          description: "CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern"
+          description: "CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern"
         target:
           title: HSRPC target
           type: string
@@ -67,6 +67,7 @@ components:
             - required: ["error"]
               not:
                 required: ["result"]
+                
     HSPayload:
       title: HSRPC Payload
       nullable: true
