@@ -11,17 +11,17 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:built_value/iso_8601_date_time_serializer.dart';
-import 'package:hs_rpc/src/date_serializer.dart';
-import 'package:hs_rpc/src/model/date.dart';
+import 'package:hsrpc/src/date_serializer.dart';
+import 'package:hsrpc/src/model/date.dart';
 
-import 'package:hs_rpc/src/model/hs_error_object.dart';
-import 'package:hs_rpc/src/model/hs_header.dart';
-import 'package:hs_rpc/src/model/hs_message_id.dart';
-import 'package:hs_rpc/src/model/hs_method.dart';
-import 'package:hs_rpc/src/model/hs_payload.dart';
-import 'package:hs_rpc/src/model/hs_request.dart';
-import 'package:hs_rpc/src/model/hs_response.dart';
-import 'package:hs_rpc/src/model/hs_version.dart';
+import 'package:hsrpc/src/model/hs_error_object.dart';
+import 'package:hsrpc/src/model/hs_header.dart';
+import 'package:hsrpc/src/model/hs_message_id.dart';
+import 'package:hsrpc/src/model/hs_method.dart';
+import 'package:hsrpc/src/model/hs_payload.dart';
+import 'package:hsrpc/src/model/hs_request.dart';
+import 'package:hsrpc/src/model/hs_response.dart';
+import 'package:hsrpc/src/model/hs_version.dart';
 
 part 'serializers.g.dart';
 

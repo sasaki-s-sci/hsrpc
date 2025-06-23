@@ -1,8 +1,8 @@
-# hs_rpc.model.HSMessageID
+# hsrpc.model.HSMessageID
 
 ## Load the model package
 ```dart
-import 'package:hs_rpc/api.dart';
+import 'package:hsrpc/api.dart';
 ```
 
 ## Properties

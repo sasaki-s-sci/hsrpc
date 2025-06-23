@@ -6,24 +6,24 @@ part of 'hs_version.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const HSVersion _$n1period0 = const HSVersion._('n1period0');
+const HSVersion _$n0period0Period1 = const HSVersion._('n0period0Period1');
 
 HSVersion _$valueOf(String name) {
   switch (name) {
-    case 'n1period0':
-      return _$n1period0;
+    case 'n0period0Period1':
+      return _$n0period0Period1;
     default:
       throw ArgumentError(name);
   }
 }
 
 final BuiltSet<HSVersion> _$values = BuiltSet<HSVersion>(const <HSVersion>[
-  _$n1period0,
+  _$n0period0Period1,
 ]);
 
 class _$HSVersionMeta {
   const _$HSVersionMeta();
-  HSVersion get n1period0 => _$n1period0;
+  HSVersion get n0period0Period1 => _$n0period0Period1;
   HSVersion valueOf(String name) => _$valueOf(name);
   BuiltSet<HSVersion> get values => _$values;
 }
@@ -37,10 +37,10 @@ Serializer<HSVersion> _$hSVersionSerializer = _$HSVersionSerializer();
 
 class _$HSVersionSerializer implements PrimitiveSerializer<HSVersion> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'n1period0': '1.0',
+    'n0period0Period1': '0.0.1',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    '1.0': 'n1period0',
+    '0.0.1': 'n0period0Period1',
   };
 
   @override

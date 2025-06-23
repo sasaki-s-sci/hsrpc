@@ -4,19 +4,19 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:hs_rpc/src/serializers.dart';
-import 'package:hs_rpc/src/auth/api_key_auth.dart';
-import 'package:hs_rpc/src/auth/basic_auth.dart';
-import 'package:hs_rpc/src/auth/bearer_auth.dart';
-import 'package:hs_rpc/src/auth/oauth.dart';
+import 'package:hsrpc/src/serializers.dart';
+import 'package:hsrpc/src/auth/api_key_auth.dart';
+import 'package:hsrpc/src/auth/basic_auth.dart';
+import 'package:hsrpc/src/auth/bearer_auth.dart';
+import 'package:hsrpc/src/auth/oauth.dart';
 
-class HsRpc {
+class Hsrpc {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
   final Serializers serializers;
 
-  HsRpc({
+  Hsrpc({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,

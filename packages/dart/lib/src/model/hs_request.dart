@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:hs_rpc/src/model/hs_message_id.dart';
-import 'package:hs_rpc/src/model/hs_header.dart';
-import 'package:hs_rpc/src/model/hs_payload.dart';
-import 'package:hs_rpc/src/model/hs_version.dart';
+import 'package:hsrpc/src/model/hs_payload.dart';
+import 'package:hsrpc/src/model/hs_header.dart';
+import 'package:hsrpc/src/model/hs_message_id.dart';
+import 'package:hsrpc/src/model/hs_version.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

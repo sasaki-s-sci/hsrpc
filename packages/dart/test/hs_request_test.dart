@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:hs_rpc/hs_rpc.dart';
+import 'package:hsrpc/hsrpc.dart';
 
 // tests for HSRequest
 void main() {

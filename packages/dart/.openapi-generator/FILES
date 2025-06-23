@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 analysis_options.yaml
 doc/HSErrorObject.md
@@ -10,7 +9,7 @@ doc/HSPayload.md
 doc/HSRequest.md
 doc/HSResponse.md
 doc/HSVersion.md
-lib/hs_rpc.dart
+lib/hsrpc.dart
 lib/src/api.dart
 lib/src/api_util.dart
 lib/src/auth/api_key_auth.dart

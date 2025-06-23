@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:hs_rpc/src/model/hs_message_id.dart';
-import 'package:hs_rpc/src/model/hs_version.dart';
+import 'package:hsrpc/src/model/hs_message_id.dart';
+import 'package:hsrpc/src/model/hs_version.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -24,7 +24,7 @@ part 'hs_header.g.dart';
 abstract class HSHeader  {
   @BuiltValueField(wireName: r'hsrpc')
   HSVersion get hsrpc;
-  // enum hsrpcEnum {  1.0,  };
+  // enum hsrpcEnum {  0.0.1,  };
 
   @BuiltValueField(wireName: r'id')
   HSMessageID get id;

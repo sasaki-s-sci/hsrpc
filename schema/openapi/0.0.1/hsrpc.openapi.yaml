@@ -94,7 +94,7 @@ components:
     HSVersion:
       title: HSRPC Version
       type: string
-      enum: ["1.0"]
+      enum: ["0.0.1"]
       description: version of hsRpc
     HSErrorObject:
       title: HSRPC Error Object

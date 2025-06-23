@@ -12,8 +12,8 @@ part 'hs_version.g.dart';
 class HSVersion extends EnumClass {
 
   /// version of hsRpc
-  @BuiltValueEnumConst(wireName: r'1.0')
-  static const HSVersion n1period0 = _$n1period0;
+  @BuiltValueEnumConst(wireName: r'0.0.1')
+  static const HSVersion n0period0Period1 = _$n0period0Period1;
 
   static Serializer<HSVersion> get serializer => _$hSVersionSerializer;
 

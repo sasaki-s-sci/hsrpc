@@ -4,7 +4,7 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:hs_rpc/src/auth/auth.dart';
+import 'package:hsrpc/src/auth/auth.dart';
 
 class ApiKeyAuthInterceptor extends AuthInterceptor {
   final Map<String, String> apiKeys = {};
