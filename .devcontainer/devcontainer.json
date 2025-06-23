@@ -1,0 +1,90 @@
+{
+  "name": "workspace",
+  "dockerComposeFile": [
+    "docker-compose.dev.yml"
+  ],
+  "service": "workspace",
+  "user": "developer",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[jsonc]": {
+          "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[docker]": {
+          "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        },
+        "[bash]": {
+          "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
+        "[toml]": {
+          "editor.defaultFormatter": "tamasfe.even-better-toml"
+        },
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "[proto]": {
+          "editor.defaultFormatter": "zxh404.vscode-proto3",
+          "editor.formatOnSave": true,
+          "editor.formatOnType": true,
+          "editor.formatOnPaste": true
+        },
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer",
+          "rust-analyzer.hover.actions.enable": true,
+          "rust-analyzer.inlayHints.enable": true,
+        },
+        "[dart]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnType": true,
+          "editor.rulers": [
+            80
+          ],
+          "editor.selectionHighlight": false,
+          "editor.tabCompletion": "onlySnippets",
+          "editor.wordBasedSuggestions": "off"
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "prettier.requireConfig": true,
+        "prettier.configPath": "/workspace/.devcontainer/.prettierrc",
+        "files.exclude": {
+          "**/.git": true
+        }
+      },
+      "extensions": [
+        //dart 
+        "dart-code.dart-code",
+        "luanpotter.dart-import",
+        "peterhdd.dartgettersetter",
+        //flutter
+        "dart-code.flutter",
+        "davidwoo.flutter-auto-import",
+        //tauri
+        "tauri-apps.tauri-vscode",
+        //rust
+        "fill-labs.dependi",
+        "rust-lang.rust-analyzer",
+        //toml
+        "tamasfe.even-better-toml",
+        //yaml,
+        "redhat.vscode-yaml",
+        //docker 
+        "ms-azuretools.vscode-docker",
+        //shell
+        "foxundermoon.shell-format",
+        //graphql
+        "mquandalle.graphql",
+        //protobuf
+        "zxh404.vscode-proto3",
+        //utils
+        "shinotatwu-ds.file-tree-generator",
+        "esbenp.prettier-vscode",
+        "yzhang.markdown-all-in-one",
+        "streetsidesoftware.code-spell-checker",
+        "gruntfuggly.todo-tree"
+      ]
+    }
+  }
+}
