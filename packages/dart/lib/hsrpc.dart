@@ -15,7 +15,6 @@ export 'package:hsrpc/src/model/hs_error_object.dart';
 export 'package:hsrpc/src/model/hs_header.dart';
 export 'package:hsrpc/src/model/hs_message_id.dart';
 export 'package:hsrpc/src/model/hs_method.dart';
-export 'package:hsrpc/src/model/hs_payload.dart';
 export 'package:hsrpc/src/model/hs_request.dart';
 export 'package:hsrpc/src/model/hs_response.dart';
 export 'package:hsrpc/src/model/hs_version.dart';

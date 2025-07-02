@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern
+    // CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
     // int correlationId
     test('to test the property `correlationId`', () async {
       // TODO

@@ -15,7 +15,7 @@ part 'hs_header.g.dart';
 /// Properties:
 /// * [hsrpc] 
 /// * [id] 
-/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern
+/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
@@ -29,7 +29,7 @@ abstract class HSHeader  {
   @BuiltValueField(wireName: r'id')
   HSMessageID get id;
 
-  /// CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern
+  /// CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
   @BuiltValueField(wireName: r'correlationId')
   int? get correlationId;
 

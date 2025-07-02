@@ -18,7 +18,6 @@ import 'package:hsrpc/src/model/hs_error_object.dart';
 import 'package:hsrpc/src/model/hs_header.dart';
 import 'package:hsrpc/src/model/hs_message_id.dart';
 import 'package:hsrpc/src/model/hs_method.dart';
-import 'package:hsrpc/src/model/hs_payload.dart';
 import 'package:hsrpc/src/model/hs_request.dart';
 import 'package:hsrpc/src/model/hs_response.dart';
 import 'package:hsrpc/src/model/hs_version.dart';
@@ -30,7 +29,6 @@ part 'serializers.g.dart';
   HSHeader,$HSHeader,
   HSMessageID,
   HSMethod,
-  HSPayload,
   HSRequest,
   HSResponse,
   HSVersion,

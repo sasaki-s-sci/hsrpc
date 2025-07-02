@@ -8,7 +8,7 @@ part of 'hs_request.dart';
 
 class _$HSRequest extends HSRequest {
   @override
-  final HSPayload? params;
+  final Uint8List? params;
   @override
   final HSVersion hsrpc;
   @override
@@ -92,9 +92,9 @@ class HSRequestBuilder
     implements Builder<HSRequest, HSRequestBuilder>, HSHeaderBuilder {
   _$HSRequest? _$v;
 
-  HSPayloadBuilder? _params;
-  HSPayloadBuilder get params => _$this._params ??= HSPayloadBuilder();
-  set params(covariant HSPayloadBuilder? params) => _$this._params = params;
+  Uint8List? _params;
+  Uint8List? get params => _$this._params;
+  set params(covariant Uint8List? params) => _$this._params = params;
 
   HSVersion? _hsrpc;
   HSVersion? get hsrpc => _$this._hsrpc;
@@ -132,7 +132,7 @@ class HSRequestBuilder
   HSRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _params = $v.params?.toBuilder();
+      _params = $v.params;
       _hsrpc = $v.hsrpc;
       _id = $v.id.toBuilder();
       _correlationId = $v.correlationId;
@@ -163,7 +163,7 @@ class HSRequestBuilder
     try {
       _$result = _$v ??
           _$HSRequest._(
-            params: _params?.build(),
+            params: params,
             hsrpc: BuiltValueNullFieldError.checkNotNull(
                 hsrpc, r'HSRequest', 'hsrpc'),
             id: id.build(),
@@ -178,9 +178,6 @@ class HSRequestBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'params';
-        _params?.build();
-
         _$failedField = 'id';
         id.build();
       } catch (e) {

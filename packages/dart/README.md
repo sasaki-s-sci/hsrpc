@@ -62,7 +62,6 @@ Class | Method | HTTP request | Description
  - [HSHeader](doc/HSHeader.md)
  - [HSMessageID](doc/HSMessageID.md)
  - [HSMethod](doc/HSMethod.md)
- - [HSPayload](doc/HSPayload.md)
  - [HSRequest](doc/HSRequest.md)
  - [HSResponse](doc/HSResponse.md)
  - [HSVersion](doc/HSVersion.md)

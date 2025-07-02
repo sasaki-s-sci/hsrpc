@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:hsrpc/src/model/hs_payload.dart';
+import 'dart:typed_data';
 import 'package:hsrpc/src/model/hs_header.dart';
 import 'package:hsrpc/src/model/hs_error_object.dart';
 import 'package:hsrpc/src/model/hs_message_id.dart';
@@ -18,17 +18,18 @@ part 'hs_response.g.dart';
 /// Properties:
 /// * [hsrpc] 
 /// * [id] 
-/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern
+/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
-/// * [result] 
+/// * [result] - arbitrary payload. null means no payload
 /// * [error] 
 @BuiltValue()
 abstract class HSResponse implements HSHeader, Built<HSResponse, HSResponseBuilder> {
+  /// arbitrary payload. null means no payload
   @BuiltValueField(wireName: r'result')
-  HSPayload? get result;
+  Uint8List? get result;
 
   @BuiltValueField(wireName: r'error')
   HSErrorObject? get error;
@@ -60,7 +61,7 @@ class _$HSResponseSerializer implements PrimitiveSerializer<HSResponse> {
       yield r'result';
       yield serializers.serialize(
         object.result,
-        specifiedType: const FullType.nullable(HSPayload),
+        specifiedType: const FullType.nullable(Uint8List),
       );
     }
     if (object.package != null) {
@@ -137,10 +138,10 @@ class _$HSResponseSerializer implements PrimitiveSerializer<HSResponse> {
         case r'result':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(HSPayload),
-          ) as HSPayload?;
+            specifiedType: const FullType.nullable(Uint8List),
+          ) as Uint8List?;
           if (valueDes == null) continue;
-          result.result.replace(valueDes);
+          result.result = valueDes;
           break;
         case r'package':
           final valueDes = serializers.deserialize(

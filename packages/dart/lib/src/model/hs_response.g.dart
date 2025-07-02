@@ -8,7 +8,7 @@ part of 'hs_response.dart';
 
 class _$HSResponse extends HSResponse {
   @override
-  final HSPayload? result;
+  final Uint8List? result;
   @override
   final HSErrorObject? error;
   @override
@@ -98,9 +98,9 @@ class HSResponseBuilder
     implements Builder<HSResponse, HSResponseBuilder>, HSHeaderBuilder {
   _$HSResponse? _$v;
 
-  HSPayloadBuilder? _result;
-  HSPayloadBuilder get result => _$this._result ??= HSPayloadBuilder();
-  set result(covariant HSPayloadBuilder? result) => _$this._result = result;
+  Uint8List? _result;
+  Uint8List? get result => _$this._result;
+  set result(covariant Uint8List? result) => _$this._result = result;
 
   HSErrorObjectBuilder? _error;
   HSErrorObjectBuilder get error => _$this._error ??= HSErrorObjectBuilder();
@@ -142,7 +142,7 @@ class HSResponseBuilder
   HSResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _result = $v.result?.toBuilder();
+      _result = $v.result;
       _error = $v.error?.toBuilder();
       _hsrpc = $v.hsrpc;
       _id = $v.id.toBuilder();
@@ -174,7 +174,7 @@ class HSResponseBuilder
     try {
       _$result = _$v ??
           _$HSResponse._(
-            result: _result?.build(),
+            result: result,
             error: _error?.build(),
             hsrpc: BuiltValueNullFieldError.checkNotNull(
                 hsrpc, r'HSResponse', 'hsrpc'),
@@ -190,8 +190,6 @@ class HSResponseBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'result';
-        _result?.build();
         _$failedField = 'error';
         _error?.build();
 

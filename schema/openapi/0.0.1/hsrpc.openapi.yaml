@@ -67,18 +67,13 @@ components:
             - required: ["error"]
               not:
                 required: ["result"]
-                
+
     HSPayload:
       title: HSRPC Payload
-      nullable: true
       description: "arbitrary payload. null means no payload"
-      oneOf:
-        - type: string
-          format: binary
-          description: "binary payload. null means no payload"
-        - type: object
-          description: "object payload. null means no payload"
-
+      nullable: true
+      type: string
+      format: binary
     HSMessageID:
       title: HSRPC Request/Response ID
       oneOf:

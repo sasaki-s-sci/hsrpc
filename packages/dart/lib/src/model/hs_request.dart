@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:hsrpc/src/model/hs_payload.dart';
+import 'dart:typed_data';
 import 'package:hsrpc/src/model/hs_header.dart';
 import 'package:hsrpc/src/model/hs_message_id.dart';
 import 'package:hsrpc/src/model/hs_version.dart';
@@ -17,16 +17,17 @@ part 'hs_request.g.dart';
 /// Properties:
 /// * [hsrpc] 
 /// * [id] 
-/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^64-1] to identifier for the request-response and stream pattern
+/// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
-/// * [params] 
+/// * [params] - arbitrary payload. null means no payload
 @BuiltValue()
 abstract class HSRequest implements HSHeader, Built<HSRequest, HSRequestBuilder> {
+  /// arbitrary payload. null means no payload
   @BuiltValueField(wireName: r'params')
-  HSPayload? get params;
+  Uint8List? get params;
 
   HSRequest._();
 
@@ -91,7 +92,7 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
       yield r'params';
       yield serializers.serialize(
         object.params,
-        specifiedType: const FullType.nullable(HSPayload),
+        specifiedType: const FullType.nullable(Uint8List),
       );
     }
     yield r'target';
@@ -168,10 +169,10 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
         case r'params':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(HSPayload),
-          ) as HSPayload?;
+            specifiedType: const FullType.nullable(Uint8List),
+          ) as Uint8List?;
           if (valueDes == null) continue;
-          result.params.replace(valueDes);
+          result.params = valueDes;
           break;
         case r'target':
           final valueDes = serializers.deserialize(

@@ -5,7 +5,6 @@ doc/HSErrorObject.md
 doc/HSHeader.md
 doc/HSMessageID.md
 doc/HSMethod.md
-doc/HSPayload.md
 doc/HSRequest.md
 doc/HSResponse.md
 doc/HSVersion.md
@@ -23,7 +22,6 @@ lib/src/model/hs_error_object.dart
 lib/src/model/hs_header.dart
 lib/src/model/hs_message_id.dart
 lib/src/model/hs_method.dart
-lib/src/model/hs_payload.dart
 lib/src/model/hs_request.dart
 lib/src/model/hs_response.dart
 lib/src/model/hs_version.dart
@@ -33,7 +31,6 @@ test/hs_error_object_test.dart
 test/hs_header_test.dart
 test/hs_message_id_test.dart
 test/hs_method_test.dart
-test/hs_payload_test.dart
 test/hs_request_test.dart
 test/hs_response_test.dart
 test/hs_version_test.dart
