@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // HSMessageID id
-    test('to test the property `id`', () async {
+    // HSMessageID messageId
+    test('to test the property `messageId`', () async {
       // TODO
     });
 

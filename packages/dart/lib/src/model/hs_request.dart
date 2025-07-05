@@ -16,7 +16,7 @@ part 'hs_request.g.dart';
 ///
 /// Properties:
 /// * [hsrpc] 
-/// * [id] 
+/// * [messageId] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [targetId] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
 /// * [sourceId] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
@@ -91,6 +91,13 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
         specifiedType: const FullType(String),
       );
     }
+    if (object.messageId != null) {
+      yield r'messageId';
+      yield serializers.serialize(
+        object.messageId,
+        specifiedType: const FullType(HSMessageID),
+      );
+    }
     if (object.correlationId != null) {
       yield r'correlationId';
       yield serializers.serialize(
@@ -98,11 +105,6 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
         specifiedType: const FullType.nullable(int),
       );
     }
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(HSMessageID),
-    );
     if (object.params != null) {
       yield r'params';
       yield serializers.serialize(
@@ -175,6 +177,13 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
           ) as String;
           result.service = valueDes;
           break;
+        case r'messageId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(HSMessageID),
+          ) as HSMessageID;
+          result.messageId.replace(valueDes);
+          break;
         case r'correlationId':
           final valueDes = serializers.deserialize(
             value,
@@ -182,13 +191,6 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
           ) as int?;
           if (valueDes == null) continue;
           result.correlationId = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(HSMessageID),
-          ) as HSMessageID;
-          result.id.replace(valueDes);
           break;
         case r'params':
           final valueDes = serializers.deserialize(

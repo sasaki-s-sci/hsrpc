@@ -14,7 +14,7 @@ part 'hs_header.g.dart';
 ///
 /// Properties:
 /// * [hsrpc] 
-/// * [id] 
+/// * [messageId] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [targetId] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
 /// * [sourceId] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
@@ -27,8 +27,8 @@ abstract class HSHeader  {
   HSVersion get hsrpc;
   // enum hsrpcEnum {  0.0.1,  };
 
-  @BuiltValueField(wireName: r'id')
-  HSMessageID get id;
+  @BuiltValueField(wireName: r'messageId')
+  HSMessageID? get messageId;
 
   /// CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
   @BuiltValueField(wireName: r'correlationId')
@@ -75,11 +75,13 @@ class _$HSHeaderSerializer implements PrimitiveSerializer<HSHeader> {
       object.hsrpc,
       specifiedType: const FullType(HSVersion),
     );
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(HSMessageID),
-    );
+    if (object.messageId != null) {
+      yield r'messageId';
+      yield serializers.serialize(
+        object.messageId,
+        specifiedType: const FullType(HSMessageID),
+      );
+    }
     if (object.correlationId != null) {
       yield r'correlationId';
       yield serializers.serialize(
@@ -190,12 +192,12 @@ class _$$HSHeaderSerializer implements PrimitiveSerializer<$HSHeader> {
           ) as HSVersion;
           result.hsrpc = valueDes;
           break;
-        case r'id':
+        case r'messageId':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(HSMessageID),
           ) as HSMessageID;
-          result.id.replace(valueDes);
+          result.messageId.replace(valueDes);
           break;
         case r'correlationId':
           final valueDes = serializers.deserialize(

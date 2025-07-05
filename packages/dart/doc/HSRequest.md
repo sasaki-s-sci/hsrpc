@@ -9,7 +9,7 @@ import 'package:hsrpc/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hsrpc** | [**HSVersion**](HSVersion.md) |  | 
-**id** | [**HSMessageID**](HSMessageID.md) |  | 
+**messageId** | [**HSMessageID**](HSMessageID.md) |  | [optional] 
 **correlationId** | **int** | CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern | [optional] 
 **targetId** | **String** | the target of the message. e.g. 'hub-<id>' or 'spoke-<id>' | [optional] 
 **sourceId** | **String** | the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side. | [optional] 

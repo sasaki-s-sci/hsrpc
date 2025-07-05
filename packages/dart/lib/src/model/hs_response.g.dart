@@ -14,7 +14,7 @@ class _$HSResponse extends HSResponse {
   @override
   final HSVersion hsrpc;
   @override
-  final HSMessageID id;
+  final HSMessageID? messageId;
   @override
   final int? correlationId;
   @override
@@ -35,7 +35,7 @@ class _$HSResponse extends HSResponse {
       {this.result,
       this.error,
       required this.hsrpc,
-      required this.id,
+      this.messageId,
       this.correlationId,
       this.targetId,
       this.sourceId,
@@ -57,7 +57,7 @@ class _$HSResponse extends HSResponse {
         result == other.result &&
         error == other.error &&
         hsrpc == other.hsrpc &&
-        id == other.id &&
+        messageId == other.messageId &&
         correlationId == other.correlationId &&
         targetId == other.targetId &&
         sourceId == other.sourceId &&
@@ -72,7 +72,7 @@ class _$HSResponse extends HSResponse {
     _$hash = $jc(_$hash, result.hashCode);
     _$hash = $jc(_$hash, error.hashCode);
     _$hash = $jc(_$hash, hsrpc.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, messageId.hashCode);
     _$hash = $jc(_$hash, correlationId.hashCode);
     _$hash = $jc(_$hash, targetId.hashCode);
     _$hash = $jc(_$hash, sourceId.hashCode);
@@ -89,7 +89,7 @@ class _$HSResponse extends HSResponse {
           ..add('result', result)
           ..add('error', error)
           ..add('hsrpc', hsrpc)
-          ..add('id', id)
+          ..add('messageId', messageId)
           ..add('correlationId', correlationId)
           ..add('targetId', targetId)
           ..add('sourceId', sourceId)
@@ -116,9 +116,11 @@ class HSResponseBuilder
   HSVersion? get hsrpc => _$this._hsrpc;
   set hsrpc(covariant HSVersion? hsrpc) => _$this._hsrpc = hsrpc;
 
-  HSMessageIDBuilder? _id;
-  HSMessageIDBuilder get id => _$this._id ??= HSMessageIDBuilder();
-  set id(covariant HSMessageIDBuilder? id) => _$this._id = id;
+  HSMessageIDBuilder? _messageId;
+  HSMessageIDBuilder get messageId =>
+      _$this._messageId ??= HSMessageIDBuilder();
+  set messageId(covariant HSMessageIDBuilder? messageId) =>
+      _$this._messageId = messageId;
 
   int? _correlationId;
   int? get correlationId => _$this._correlationId;
@@ -155,7 +157,7 @@ class HSResponseBuilder
       _result = $v.result;
       _error = $v.error?.toBuilder();
       _hsrpc = $v.hsrpc;
-      _id = $v.id.toBuilder();
+      _messageId = $v.messageId?.toBuilder();
       _correlationId = $v.correlationId;
       _targetId = $v.targetId;
       _sourceId = $v.sourceId;
@@ -189,7 +191,7 @@ class HSResponseBuilder
             error: _error?.build(),
             hsrpc: BuiltValueNullFieldError.checkNotNull(
                 hsrpc, r'HSResponse', 'hsrpc'),
-            id: id.build(),
+            messageId: _messageId?.build(),
             correlationId: correlationId,
             targetId: targetId,
             sourceId: sourceId,
@@ -204,8 +206,8 @@ class HSResponseBuilder
         _$failedField = 'error';
         _error?.build();
 
-        _$failedField = 'id';
-        id.build();
+        _$failedField = 'messageId';
+        _messageId?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'HSResponse', _$failedField, e.toString());

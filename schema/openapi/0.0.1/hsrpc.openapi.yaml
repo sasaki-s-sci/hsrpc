@@ -12,7 +12,7 @@ components:
       properties:
         hsrpc:
           $ref: "#/components/schemas/HSVersion"
-        id:
+        messageId:
           $ref: "#/components/schemas/HSMessageID"
         correlationId:
           type: integer

@@ -12,8 +12,8 @@ abstract class HSHeaderBuilder {
   HSVersion? get hsrpc;
   set hsrpc(HSVersion? hsrpc);
 
-  HSMessageIDBuilder get id;
-  set id(HSMessageIDBuilder? id);
+  HSMessageIDBuilder get messageId;
+  set messageId(HSMessageIDBuilder? messageId);
 
   int? get correlationId;
   set correlationId(int? correlationId);
@@ -38,7 +38,7 @@ class _$$HSHeader extends $HSHeader {
   @override
   final HSVersion hsrpc;
   @override
-  final HSMessageID id;
+  final HSMessageID? messageId;
   @override
   final int? correlationId;
   @override
@@ -57,7 +57,7 @@ class _$$HSHeader extends $HSHeader {
 
   _$$HSHeader._(
       {required this.hsrpc,
-      required this.id,
+      this.messageId,
       this.correlationId,
       this.targetId,
       this.sourceId,
@@ -77,7 +77,7 @@ class _$$HSHeader extends $HSHeader {
     if (identical(other, this)) return true;
     return other is $HSHeader &&
         hsrpc == other.hsrpc &&
-        id == other.id &&
+        messageId == other.messageId &&
         correlationId == other.correlationId &&
         targetId == other.targetId &&
         sourceId == other.sourceId &&
@@ -90,7 +90,7 @@ class _$$HSHeader extends $HSHeader {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, hsrpc.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, messageId.hashCode);
     _$hash = $jc(_$hash, correlationId.hashCode);
     _$hash = $jc(_$hash, targetId.hashCode);
     _$hash = $jc(_$hash, sourceId.hashCode);
@@ -105,7 +105,7 @@ class _$$HSHeader extends $HSHeader {
   String toString() {
     return (newBuiltValueToStringHelper(r'$HSHeader')
           ..add('hsrpc', hsrpc)
-          ..add('id', id)
+          ..add('messageId', messageId)
           ..add('correlationId', correlationId)
           ..add('targetId', targetId)
           ..add('sourceId', sourceId)
@@ -124,9 +124,11 @@ class $HSHeaderBuilder
   HSVersion? get hsrpc => _$this._hsrpc;
   set hsrpc(covariant HSVersion? hsrpc) => _$this._hsrpc = hsrpc;
 
-  HSMessageIDBuilder? _id;
-  HSMessageIDBuilder get id => _$this._id ??= HSMessageIDBuilder();
-  set id(covariant HSMessageIDBuilder? id) => _$this._id = id;
+  HSMessageIDBuilder? _messageId;
+  HSMessageIDBuilder get messageId =>
+      _$this._messageId ??= HSMessageIDBuilder();
+  set messageId(covariant HSMessageIDBuilder? messageId) =>
+      _$this._messageId = messageId;
 
   int? _correlationId;
   int? get correlationId => _$this._correlationId;
@@ -161,7 +163,7 @@ class $HSHeaderBuilder
     final $v = _$v;
     if ($v != null) {
       _hsrpc = $v.hsrpc;
-      _id = $v.id.toBuilder();
+      _messageId = $v.messageId?.toBuilder();
       _correlationId = $v.correlationId;
       _targetId = $v.targetId;
       _sourceId = $v.sourceId;
@@ -193,7 +195,7 @@ class $HSHeaderBuilder
           _$$HSHeader._(
             hsrpc: BuiltValueNullFieldError.checkNotNull(
                 hsrpc, r'$HSHeader', 'hsrpc'),
-            id: id.build(),
+            messageId: _messageId?.build(),
             correlationId: correlationId,
             targetId: targetId,
             sourceId: sourceId,
@@ -205,8 +207,8 @@ class $HSHeaderBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'id';
-        id.build();
+        _$failedField = 'messageId';
+        _messageId?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'$HSHeader', _$failedField, e.toString());
