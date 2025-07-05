@@ -16,8 +16,8 @@ part 'hs_header.g.dart';
 /// * [hsrpc] 
 /// * [id] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
-/// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
-/// * [source_] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
+/// * [messageTarget] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+/// * [messageSource] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
@@ -35,12 +35,12 @@ abstract class HSHeader  {
   int? get correlationId;
 
   /// the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
-  @BuiltValueField(wireName: r'target')
-  String get target;
+  @BuiltValueField(wireName: r'messageTarget')
+  String? get messageTarget;
 
   /// the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
-  @BuiltValueField(wireName: r'source')
-  String? get source_;
+  @BuiltValueField(wireName: r'messageSource')
+  String? get messageSource;
 
   /// the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
   @BuiltValueField(wireName: r'package')
@@ -87,15 +87,17 @@ class _$HSHeaderSerializer implements PrimitiveSerializer<HSHeader> {
         specifiedType: const FullType.nullable(int),
       );
     }
-    yield r'target';
-    yield serializers.serialize(
-      object.target,
-      specifiedType: const FullType(String),
-    );
-    if (object.source_ != null) {
-      yield r'source';
+    if (object.messageTarget != null) {
+      yield r'messageTarget';
       yield serializers.serialize(
-        object.source_,
+        object.messageTarget,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.messageSource != null) {
+      yield r'messageSource';
+      yield serializers.serialize(
+        object.messageSource,
         specifiedType: const FullType(String),
       );
     }
@@ -203,19 +205,19 @@ class _$$HSHeaderSerializer implements PrimitiveSerializer<$HSHeader> {
           if (valueDes == null) continue;
           result.correlationId = valueDes;
           break;
-        case r'target':
+        case r'messageTarget':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.target = valueDes;
+          result.messageTarget = valueDes;
           break;
-        case r'source':
+        case r'messageSource':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.source_ = valueDes;
+          result.messageSource = valueDes;
           break;
         case r'package':
           final valueDes = serializers.deserialize(

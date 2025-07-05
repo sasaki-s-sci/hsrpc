@@ -18,9 +18,9 @@ class _$HSResponse extends HSResponse {
   @override
   final int? correlationId;
   @override
-  final String target;
+  final String? messageTarget;
   @override
-  final String? source_;
+  final String? messageSource;
   @override
   final String? package;
   @override
@@ -37,8 +37,8 @@ class _$HSResponse extends HSResponse {
       required this.hsrpc,
       required this.id,
       this.correlationId,
-      required this.target,
-      this.source_,
+      this.messageTarget,
+      this.messageSource,
       this.package,
       this.service,
       required this.method})
@@ -59,8 +59,8 @@ class _$HSResponse extends HSResponse {
         hsrpc == other.hsrpc &&
         id == other.id &&
         correlationId == other.correlationId &&
-        target == other.target &&
-        source_ == other.source_ &&
+        messageTarget == other.messageTarget &&
+        messageSource == other.messageSource &&
         package == other.package &&
         service == other.service &&
         method == other.method;
@@ -74,8 +74,8 @@ class _$HSResponse extends HSResponse {
     _$hash = $jc(_$hash, hsrpc.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, correlationId.hashCode);
-    _$hash = $jc(_$hash, target.hashCode);
-    _$hash = $jc(_$hash, source_.hashCode);
+    _$hash = $jc(_$hash, messageTarget.hashCode);
+    _$hash = $jc(_$hash, messageSource.hashCode);
     _$hash = $jc(_$hash, package.hashCode);
     _$hash = $jc(_$hash, service.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
@@ -91,8 +91,8 @@ class _$HSResponse extends HSResponse {
           ..add('hsrpc', hsrpc)
           ..add('id', id)
           ..add('correlationId', correlationId)
-          ..add('target', target)
-          ..add('source_', source_)
+          ..add('messageTarget', messageTarget)
+          ..add('messageSource', messageSource)
           ..add('package', package)
           ..add('service', service)
           ..add('method', method))
@@ -125,13 +125,15 @@ class HSResponseBuilder
   set correlationId(covariant int? correlationId) =>
       _$this._correlationId = correlationId;
 
-  String? _target;
-  String? get target => _$this._target;
-  set target(covariant String? target) => _$this._target = target;
+  String? _messageTarget;
+  String? get messageTarget => _$this._messageTarget;
+  set messageTarget(covariant String? messageTarget) =>
+      _$this._messageTarget = messageTarget;
 
-  String? _source_;
-  String? get source_ => _$this._source_;
-  set source_(covariant String? source_) => _$this._source_ = source_;
+  String? _messageSource;
+  String? get messageSource => _$this._messageSource;
+  set messageSource(covariant String? messageSource) =>
+      _$this._messageSource = messageSource;
 
   String? _package;
   String? get package => _$this._package;
@@ -157,8 +159,8 @@ class HSResponseBuilder
       _hsrpc = $v.hsrpc;
       _id = $v.id.toBuilder();
       _correlationId = $v.correlationId;
-      _target = $v.target;
-      _source_ = $v.source_;
+      _messageTarget = $v.messageTarget;
+      _messageSource = $v.messageSource;
       _package = $v.package;
       _service = $v.service;
       _method = $v.method;
@@ -191,9 +193,8 @@ class HSResponseBuilder
                 hsrpc, r'HSResponse', 'hsrpc'),
             id: id.build(),
             correlationId: correlationId,
-            target: BuiltValueNullFieldError.checkNotNull(
-                target, r'HSResponse', 'target'),
-            source_: source_,
+            messageTarget: messageTarget,
+            messageSource: messageSource,
             package: package,
             service: service,
             method: BuiltValueNullFieldError.checkNotNull(

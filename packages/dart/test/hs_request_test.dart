@@ -24,14 +24,14 @@ void main() {
     });
 
     // the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
-    // String target
-    test('to test the property `target`', () async {
+    // String messageTarget
+    test('to test the property `messageTarget`', () async {
       // TODO
     });
 
     // the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
-    // String source_
-    test('to test the property `source_`', () async {
+    // String messageSource
+    test('to test the property `messageSource`', () async {
       // TODO
     });
 
