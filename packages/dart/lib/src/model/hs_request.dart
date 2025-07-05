@@ -18,8 +18,8 @@ part 'hs_request.g.dart';
 /// * [hsrpc] 
 /// * [id] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
-/// * [messageTarget] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
-/// * [messageSource] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
+/// * [targetId] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+/// * [sourceId] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
@@ -53,10 +53,10 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
     HSRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.messageTarget != null) {
-      yield r'messageTarget';
+    if (object.sourceId != null) {
+      yield r'sourceId';
       yield serializers.serialize(
-        object.messageTarget,
+        object.sourceId,
         specifiedType: const FullType(String),
       );
     }
@@ -64,6 +64,13 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
       yield r'package';
       yield serializers.serialize(
         object.package,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.targetId != null) {
+      yield r'targetId';
+      yield serializers.serialize(
+        object.targetId,
         specifiedType: const FullType(String),
       );
     }
@@ -81,13 +88,6 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
       yield r'service';
       yield serializers.serialize(
         object.service,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.messageSource != null) {
-      yield r'messageSource';
-      yield serializers.serialize(
-        object.messageSource,
         specifiedType: const FullType(String),
       );
     }
@@ -133,12 +133,12 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'messageTarget':
+        case r'sourceId':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.messageTarget = valueDes;
+          result.sourceId = valueDes;
           break;
         case r'package':
           final valueDes = serializers.deserialize(
@@ -146,6 +146,13 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
             specifiedType: const FullType(String),
           ) as String;
           result.package = valueDes;
+          break;
+        case r'targetId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.targetId = valueDes;
           break;
         case r'method':
           final valueDes = serializers.deserialize(
@@ -167,13 +174,6 @@ class _$HSRequestSerializer implements PrimitiveSerializer<HSRequest> {
             specifiedType: const FullType(String),
           ) as String;
           result.service = valueDes;
-          break;
-        case r'messageSource':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.messageSource = valueDes;
           break;
         case r'correlationId':
           final valueDes = serializers.deserialize(

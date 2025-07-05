@@ -18,11 +18,11 @@ abstract class HSHeaderBuilder {
   int? get correlationId;
   set correlationId(int? correlationId);
 
-  String? get messageTarget;
-  set messageTarget(String? messageTarget);
+  String? get targetId;
+  set targetId(String? targetId);
 
-  String? get messageSource;
-  set messageSource(String? messageSource);
+  String? get sourceId;
+  set sourceId(String? sourceId);
 
   String? get package;
   set package(String? package);
@@ -42,9 +42,9 @@ class _$$HSHeader extends $HSHeader {
   @override
   final int? correlationId;
   @override
-  final String? messageTarget;
+  final String? targetId;
   @override
-  final String? messageSource;
+  final String? sourceId;
   @override
   final String? package;
   @override
@@ -59,8 +59,8 @@ class _$$HSHeader extends $HSHeader {
       {required this.hsrpc,
       required this.id,
       this.correlationId,
-      this.messageTarget,
-      this.messageSource,
+      this.targetId,
+      this.sourceId,
       this.package,
       this.service,
       required this.method})
@@ -79,8 +79,8 @@ class _$$HSHeader extends $HSHeader {
         hsrpc == other.hsrpc &&
         id == other.id &&
         correlationId == other.correlationId &&
-        messageTarget == other.messageTarget &&
-        messageSource == other.messageSource &&
+        targetId == other.targetId &&
+        sourceId == other.sourceId &&
         package == other.package &&
         service == other.service &&
         method == other.method;
@@ -92,8 +92,8 @@ class _$$HSHeader extends $HSHeader {
     _$hash = $jc(_$hash, hsrpc.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, correlationId.hashCode);
-    _$hash = $jc(_$hash, messageTarget.hashCode);
-    _$hash = $jc(_$hash, messageSource.hashCode);
+    _$hash = $jc(_$hash, targetId.hashCode);
+    _$hash = $jc(_$hash, sourceId.hashCode);
     _$hash = $jc(_$hash, package.hashCode);
     _$hash = $jc(_$hash, service.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
@@ -107,8 +107,8 @@ class _$$HSHeader extends $HSHeader {
           ..add('hsrpc', hsrpc)
           ..add('id', id)
           ..add('correlationId', correlationId)
-          ..add('messageTarget', messageTarget)
-          ..add('messageSource', messageSource)
+          ..add('targetId', targetId)
+          ..add('sourceId', sourceId)
           ..add('package', package)
           ..add('service', service)
           ..add('method', method))
@@ -133,15 +133,13 @@ class $HSHeaderBuilder
   set correlationId(covariant int? correlationId) =>
       _$this._correlationId = correlationId;
 
-  String? _messageTarget;
-  String? get messageTarget => _$this._messageTarget;
-  set messageTarget(covariant String? messageTarget) =>
-      _$this._messageTarget = messageTarget;
+  String? _targetId;
+  String? get targetId => _$this._targetId;
+  set targetId(covariant String? targetId) => _$this._targetId = targetId;
 
-  String? _messageSource;
-  String? get messageSource => _$this._messageSource;
-  set messageSource(covariant String? messageSource) =>
-      _$this._messageSource = messageSource;
+  String? _sourceId;
+  String? get sourceId => _$this._sourceId;
+  set sourceId(covariant String? sourceId) => _$this._sourceId = sourceId;
 
   String? _package;
   String? get package => _$this._package;
@@ -165,8 +163,8 @@ class $HSHeaderBuilder
       _hsrpc = $v.hsrpc;
       _id = $v.id.toBuilder();
       _correlationId = $v.correlationId;
-      _messageTarget = $v.messageTarget;
-      _messageSource = $v.messageSource;
+      _targetId = $v.targetId;
+      _sourceId = $v.sourceId;
       _package = $v.package;
       _service = $v.service;
       _method = $v.method;
@@ -197,8 +195,8 @@ class $HSHeaderBuilder
                 hsrpc, r'$HSHeader', 'hsrpc'),
             id: id.build(),
             correlationId: correlationId,
-            messageTarget: messageTarget,
-            messageSource: messageSource,
+            targetId: targetId,
+            sourceId: sourceId,
             package: package,
             service: service,
             method: BuiltValueNullFieldError.checkNotNull(
