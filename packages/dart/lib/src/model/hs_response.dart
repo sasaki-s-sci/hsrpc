@@ -20,6 +20,7 @@ part 'hs_response.g.dart';
 /// * [id] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+/// * [source_] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
@@ -85,6 +86,13 @@ class _$HSResponseSerializer implements PrimitiveSerializer<HSResponse> {
       yield r'service';
       yield serializers.serialize(
         object.service,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.source_ != null) {
+      yield r'source';
+      yield serializers.serialize(
+        object.source_,
         specifiedType: const FullType(String),
       );
     }
@@ -170,6 +178,13 @@ class _$HSResponseSerializer implements PrimitiveSerializer<HSResponse> {
             specifiedType: const FullType(String),
           ) as String;
           result.service = valueDes;
+          break;
+        case r'source':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.source_ = valueDes;
           break;
         case r'correlationId':
           final valueDes = serializers.deserialize(

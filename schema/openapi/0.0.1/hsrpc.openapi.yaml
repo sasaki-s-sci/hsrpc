@@ -23,6 +23,10 @@ components:
           title: HSRPC target
           type: string
           description: the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+        source:
+          title: HSRPC source
+          type: string
+          description: the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
         package:
           type: string
           description: the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'

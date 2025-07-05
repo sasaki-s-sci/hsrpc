@@ -17,6 +17,7 @@ part 'hs_header.g.dart';
 /// * [id] 
 /// * [correlationId] - CorrelationId is allowed to use sequence of natural numbers [1, 2, ..., 2^63-1] to identifier for the request-response and stream pattern
 /// * [target] - the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
+/// * [source_] - the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
 /// * [package] - the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
 /// * [service] - the service of the message (as in a protobuf service name). e.g. 'UserService'
 /// * [method] - the method of the message. e.g. 'getUser'
@@ -36,6 +37,10 @@ abstract class HSHeader  {
   /// the target of the message. e.g. 'hub-<id>' or 'spoke-<id>'
   @BuiltValueField(wireName: r'target')
   String get target;
+
+  /// the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
+  @BuiltValueField(wireName: r'source')
+  String? get source_;
 
   /// the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
   @BuiltValueField(wireName: r'package')
@@ -87,6 +92,13 @@ class _$HSHeaderSerializer implements PrimitiveSerializer<HSHeader> {
       object.target,
       specifiedType: const FullType(String),
     );
+    if (object.source_ != null) {
+      yield r'source';
+      yield serializers.serialize(
+        object.source_,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.package != null) {
       yield r'package';
       yield serializers.serialize(
@@ -197,6 +209,13 @@ class _$$HSHeaderSerializer implements PrimitiveSerializer<$HSHeader> {
             specifiedType: const FullType(String),
           ) as String;
           result.target = valueDes;
+          break;
+        case r'source':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.source_ = valueDes;
           break;
         case r'package':
           final valueDes = serializers.deserialize(

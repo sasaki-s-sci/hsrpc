@@ -20,6 +20,8 @@ class _$HSResponse extends HSResponse {
   @override
   final String target;
   @override
+  final String? source_;
+  @override
   final String? package;
   @override
   final String? service;
@@ -36,6 +38,7 @@ class _$HSResponse extends HSResponse {
       required this.id,
       this.correlationId,
       required this.target,
+      this.source_,
       this.package,
       this.service,
       required this.method})
@@ -57,6 +60,7 @@ class _$HSResponse extends HSResponse {
         id == other.id &&
         correlationId == other.correlationId &&
         target == other.target &&
+        source_ == other.source_ &&
         package == other.package &&
         service == other.service &&
         method == other.method;
@@ -71,6 +75,7 @@ class _$HSResponse extends HSResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, correlationId.hashCode);
     _$hash = $jc(_$hash, target.hashCode);
+    _$hash = $jc(_$hash, source_.hashCode);
     _$hash = $jc(_$hash, package.hashCode);
     _$hash = $jc(_$hash, service.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
@@ -87,6 +92,7 @@ class _$HSResponse extends HSResponse {
           ..add('id', id)
           ..add('correlationId', correlationId)
           ..add('target', target)
+          ..add('source_', source_)
           ..add('package', package)
           ..add('service', service)
           ..add('method', method))
@@ -123,6 +129,10 @@ class HSResponseBuilder
   String? get target => _$this._target;
   set target(covariant String? target) => _$this._target = target;
 
+  String? _source_;
+  String? get source_ => _$this._source_;
+  set source_(covariant String? source_) => _$this._source_ = source_;
+
   String? _package;
   String? get package => _$this._package;
   set package(covariant String? package) => _$this._package = package;
@@ -148,6 +158,7 @@ class HSResponseBuilder
       _id = $v.id.toBuilder();
       _correlationId = $v.correlationId;
       _target = $v.target;
+      _source_ = $v.source_;
       _package = $v.package;
       _service = $v.service;
       _method = $v.method;
@@ -182,6 +193,7 @@ class HSResponseBuilder
             correlationId: correlationId,
             target: BuiltValueNullFieldError.checkNotNull(
                 target, r'HSResponse', 'target'),
+            source_: source_,
             package: package,
             service: service,
             method: BuiltValueNullFieldError.checkNotNull(

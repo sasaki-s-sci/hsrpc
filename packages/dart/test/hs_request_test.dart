@@ -29,6 +29,12 @@ void main() {
       // TODO
     });
 
+    // the source of the message. e.g. 'hub-<id>' or 'spoke-<id>' This value must be verified by hub side.
+    // String source_
+    test('to test the property `source_`', () async {
+      // TODO
+    });
+
     // the hsrpc is registered. the namespace of the message (as in a protobuf package name). e.g. 'user_management'
     // String package
     test('to test the property `package`', () async {
